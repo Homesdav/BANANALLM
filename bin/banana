@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# BananaLLM bootstrap CLI wrapper.
+# This is scaffolding only, not the final native BananaLLM toolchain.
+set -e
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+case "$1" in
+  encode)
+    shift
+    python3 "$DIR/encoder/encode.py" "$@"
+    ;;
+  decode)
+    shift
+    python3 "$DIR/decoder/decode.py" "$@"
+    ;;
+  validate)
+    shift
+    python3 "$DIR/validator/validate.py" "$@"
+    ;;
+  *)
+    echo "Usage: banana {encode|decode|validate} [args]"
+    echo "  banana encode \"HELLO WORLD\" -o examples/hello.nlm"
+    echo "  banana decode examples/message.nlm"
+    echo "  banana validate examples/message.nlm"
+    exit 1
+    ;;
+esac

@@ -1,0 +1,6 @@
+format: nlm-v1
+dictionary: english-basic-v1
+type: text
+data {
+1,2,=,3
+}

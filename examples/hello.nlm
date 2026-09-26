@@ -1,0 +1,6 @@
+format: nlm-v1
+dictionary: english-basic-v1
+type: text
+data {
+8,5,12,12,15,=,23,15,18,12,4
+}

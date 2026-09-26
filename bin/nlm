@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# BananaLLM bootstrap CLI: nlm
+# This is scaffolding only, not the final native BananaLLM toolchain.
+set -e
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+case "$1" in
+  encode)
+    shift
+    python3 "$DIR/encoder/encode.py" "$@"
+    ;;
+  decode)
+    shift
+    python3 "$DIR/decoder/decode.py" "$@"
+    ;;
+  validate)
+    shift
+    python3 "$DIR/validator/validate.py" "$@"
+    ;;
+  dev)
+    shift
+    python3 "$DIR/dev/dev.py" "$@"
+    ;;
+  *)
+    echo "Usage: nlm {encode|decode|validate|dev} [args]"
+    echo "  nlm encode \"HELLO WORLD\" -o examples/hello.nlm"
+    echo "  nlm decode examples/message.nlm"
+    echo "  nlm validate examples/message.nlm"
+    echo "  nlm dev examples/message.nlm"
+    exit 1
+    ;;
+esac
